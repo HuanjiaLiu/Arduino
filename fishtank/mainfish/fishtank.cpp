@@ -1,3 +1,8 @@
+#include <WiFiUdp.h>
+#include <WiFiServer.h>
+#include <WiFiClient.h>
+#include <WiFi.h>
+
 
 #include"fishtank.h"
 #include"Arduino.h"
@@ -41,4 +46,10 @@ void fishtank::rth_parameter(float A, float B, float C, float D, float value, fl
     R_D = D;
     R_Bvalue = value;
     Ref = ref;
+}
+
+
+void wifi_parameter(char ssid,char psw)
+{
+    
 }
