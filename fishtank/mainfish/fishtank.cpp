@@ -9,7 +9,7 @@
 #include"math.h"
 
 
-
+WiFiUdp Udp;
 
 fishtank::finshtank(byte pin,float R)
 {
@@ -34,7 +34,7 @@ float fishtank::temp_rth_get()
 
 float fishtank::temp_value_cal(float value)
 {
-    float temputrue = pow((R_A+R_B*log(value/Ref)+R_C*pow(log(value/Ref),2)+R_D*pow(log(value/Ref),3)),-1);
+    float temputrue = pow((R_A+R_B*log(value/Ref)+R_C*pow(log(value/Ref),2)+R_D*pow(log(value/Ref),3)),-1);               //fomula from datasheet
     return temputrue;
 }
 
@@ -51,5 +51,14 @@ void fishtank::rth_parameter(float A, float B, float C, float D, float value, fl
 
 void wifi_parameter(char ssid,char psw)
 {
-    
+    WiFi.mode(WIFI_STA);
+    WiFi.begin(STASSID, STAPSK);
+    while (WiFi.status() != WL_CONNECTED) {
+        Serial.print('.');
+        delay(500);
+    }
+    Serial.print("Connected! IP address: ");
+    Serial.println(WiFi.localIP());
+    Serial.printf("UDP server on port %d\n", localPort);
+    Udp.begin(localPort);
 }

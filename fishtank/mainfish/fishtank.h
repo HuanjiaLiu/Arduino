@@ -17,7 +17,9 @@ class fishtank
         float R_D;
         float R_Bvalue;
         float Ref;
-
+        //WIFI parameter
+        int port;
+        char ip;
 
 
     public:
@@ -31,7 +33,8 @@ class fishtank
 
         //wifi part(UDP)
         void wifi_parameter(char ssid,char psw);
-
+        void wifi_send(char words);
+        void wifi_receive();
 
         //feeding part
 
