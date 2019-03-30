@@ -9,12 +9,13 @@
 #include"math.h"
 
 
-WiFiUdp Udp;
+//WiFiUdp Udp;
 
-fishtank::finshtank(byte pin,float R)
+fishtank::fishtank(int pin)
 {
     rth_pin = pin;
-    Ri = R;
+    pinMode(rth_pin,INPUT);
+    //Ri = R;
 }   
 
 
@@ -28,7 +29,7 @@ float fishtank::temp_rth_get()
 {
   int bit_voltage = analogRead(rth_pin);
   float real_voltage = 0.0049*rth_pin;
-  float Rth_value = ((5/2.5-real_voltage)-1)*Ri;
+  float Rth_value = ((5/(2.5-real_voltage)-1)*Ri);
   return Rth_value;
 }
 
@@ -48,7 +49,7 @@ void fishtank::rth_parameter(float A, float B, float C, float D, float value, fl
     Ref = ref;
 }
 
-
+/****
 void wifi_parameter(char ssid,char psw)
 {
     WiFi.mode(WIFI_STA);
@@ -62,3 +63,4 @@ void wifi_parameter(char ssid,char psw)
     Serial.printf("UDP server on port %d\n", localPort);
     Udp.begin(localPort);
 }
+****/

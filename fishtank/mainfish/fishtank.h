@@ -7,8 +7,8 @@
 class fishtank
 {
     private:
-        byte rth_pin;
-        float Ri;
+        int rth_pin;
+        int Ri;
 
         //Thermisotro parameter
         float R_A;
