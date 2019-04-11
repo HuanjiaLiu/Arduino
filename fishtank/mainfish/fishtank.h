@@ -7,7 +7,7 @@
 class fishtank
 {
     private:
-        int rth_pin;
+        byte rth_pin;
         int Ri;
 
         //Thermisotro parameter
@@ -23,7 +23,7 @@ class fishtank
 
 
     public:
-        finshtank(byte pin,float R);
+        fishtank(byte pin,int R);
         void printtest();
 
         //Thermistor part
@@ -32,9 +32,8 @@ class fishtank
         void rth_parameter(float A, float B, float C, float D, float value, float ref);                      //Setting themistor parameter at first.
 
         //wifi part(UDP)
-        void wifi_parameter(char ssid,char psw);
-        void wifi_send(char words);
-        void wifi_receive();
+        void wifi_connect(const char* ssid,const char* psw);
+
 
         //feeding part
 
