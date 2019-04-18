@@ -50,7 +50,7 @@ void fishtank::rth_parameter(float A, float B, float C, float D, float value, fl
 }
 
 
-
+//wifi connecting
 void fishtank::wifi_connect(const char* ss,const char* psw){
     Serial.println();
     Serial.print("Wifi connecting to ");

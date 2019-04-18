@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-<?php
+/*** UPD revcive   ***/
+<?php                                                    
 error_reporting(E_ALL | E_STRICT);
 
 $socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
-socket_bind($socket, '0.0.0.0', 8030);
+socket_bind($socket, '0.0.0.0', 8030);                            //set 8030 port to recive UPD packet, from any ip address.
 $from = '';
 $port = 0;
 socket_recvfrom($socket, $buf, 12, 0, $from, $port);
@@ -18,10 +18,10 @@ socket_recvfrom($socket, $buf, 12, 0, $from, $port);
 
 <h1>Samrt fish tank control page </h1>
 <p>ECE 202 Team 35</p>
-<p> Value from 0 to 100<\p>
+<p> Value from 0 to 10</p>
 <form name="form" action="" method="post">
   <p>Air pump</p>
-  <input type="text" name="airpump" id="airpump" value="0">
+  <input type="text" name="airpump" id="airpump" value="0">                        //input form to get value connect to PHP variable
   <p>Water pump</p>
   <input type="text" name="waterpump" id="waterpump" value="0">
   <p>Feed</p>
@@ -37,7 +37,7 @@ socket_recvfrom($socket, $buf, 12, 0, $from, $port);
 echo $buf; ?></p>
 <p> air pump mode:
 <?php
-$airpump = $_POST['airpump'];
+$airpump = $_POST['airpump'];                                                       //show the value of temperture, motor.
 echo $airpump; ?>
 </p>
 
@@ -57,7 +57,7 @@ echo $heat;
 ?></p>
 
 <?php
-$msg = $airpump ." ". $waterpump ." ". $feed ." ". $heat;
+$msg = $airpump ." ". $waterpump ." ". $feed ." ". $heat;                         //send the parameter back to the client
 $len = strlen($msg);
 
 sleep(2);
